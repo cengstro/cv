@@ -1,19 +1,16 @@
 ---
 name: Casey Engstrom
-position: "PhD Candidate in Molecular Biology"
-address: "Simon Fraser University Dept. Molecular Biology and Biochemistry"
+position: "PhD Candidate"
+address: "Simon Fraser University Department of Molecular Biology and Biochemistry"
 www: caseyengstrom.ca
 email: cengstro@sfu.ca
 twitter: CaseyEngstrom
 github: cengstro
-aboutme: 
 date: "`r format(Sys.time(), '%B %Y')`"
 headcolor: "000000"
 output: vitae::awesomecv
 csl: apa7.csl
 ---
-
-<!-- csl from Zotero Style Repository https://www.zotero.org/styles?q=id%3Aapa-cv -->
 
 ```{r setup, include=FALSE}
 # options(encoding = "UTF-8")
@@ -24,12 +21,6 @@ knitr::opts_chunk$set(echo = FALSE,
 source("../scripts/install.R") # load libraries
 ```
 
-<!-- Todo: -->
-<!-- look up names of presentations -->
-
-<!-- add aboutme in yaml header 
-    add url to magazine article -->
-<!-- add work history -->
 
 ```{r get data, include=FALSE}
 
@@ -97,11 +88,6 @@ detailed_entries(edu,
 vitae::bibliography_entries(here::here("data/peer-reviewed.bib")) # formatted bibliography as per csl
 ```
 
-# Science communication
-
-```{r}
-bibliography_entries(here::here("data/sci-com.bib"))
-```
 
 <!-- \pagebreak -->
 
@@ -128,6 +114,12 @@ workshops %>% detailed_entries(what = what, with = with, when = when)
 ```{r}
 taing %>%
   detailed_entries(what = what, when = when, with = with)
+```
+
+# Science communication
+
+```{r}
+bibliography_entries(here::here("data/sci-com.bib"))
 ```
 
 # Mentoring
