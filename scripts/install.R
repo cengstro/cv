@@ -1,7 +1,7 @@
 # R packages --------------------------------------------------------------
 if (!require(pacman)) install.packages("pacman"); library(pacman)
 
-p_load_gh("ropenscilabs/tic")
+# p_load_gh("ropenscilabs/tic") # not used
 p_load(tinytex)
 # p_load(scholar) # for citation data from Google Scholar
 # p_load(rorcid) # for pulling from ORCID
