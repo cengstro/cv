@@ -3,7 +3,11 @@ if (!require(pacman)) install.packages("pacman"); library(pacman)
 
 p_load_gh("ropenscilabs/tic")
 p_load(tinytex)
-p_load(scholar)
+# p_load(scholar) # for citation data from Google Scholar
+# p_load(rorcid) # for pulling from ORCID
+# p_load(bib2df) # for pulling from bibtex files
+# p_load(bibliometrix) # for metrics
+# p_load(RefManageR) # for printing bibliographies
 p_load_gh("ropenscilabs/vitae")
 p_load(tidyverse)
 p_load(lubridate)
