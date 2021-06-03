@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 README.html
+*demo*pdf
+cv/.httr-oauth
+cv/.gitignore
