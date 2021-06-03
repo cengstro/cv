@@ -1,4 +1,2 @@
-role, company, where,start_date,end_date,details
-Data Scientist, Funding Circle, London, November 2017, January 2019, "Predictive modelling, inference, data visualisation, dashboarding and tool development"
-
-
+"role"," company"," where","start_date","end_date","details"
+"Research Assistant","Simon Fraser University","Vancouver","2018","current","PhD"
