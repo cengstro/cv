@@ -1,0 +1,220 @@
+---
+name: Casey Engstrom
+position: "PhD Candidate"
+address: "Simon Fraser University Dept. Molecular Biology and Biochemistry"
+www: caseyengstrom.ca
+email: cengstro@sfu.ca
+twitter: CaseyEngstrom
+github: cengstro
+date: "`r format(Sys.time(), '%B %Y')`"
+headcolor: "333333"
+output: vitae::awesomecv
+csl: apa7.csl
+---
+
+<!-- 
+To do:
+- format
+  - remove line breaks
+- pubs
+  - format same as rest of document, with year on the left
+-->
+
+
+
+```{r setup, include=FALSE}
+# options(encoding = "UTF-8")
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE,
+                      message = FALSE)
+
+library(tidyverse)
+library(lubridate)
+library(vitae) # formatting templates
+library(tinytex) # for LaTeX conversion
+library(here) # for portability
+```
+
+
+# Education 
+
+```{r education}
+edu <- read_csv(here("data/education.csv"), show_col_types = FALSE)
+
+edu %>% 
+  arrange(-start_date) %>% 
+  vitae::detailed_entries(
+    what = degree, 
+    when = graduation_date, 
+    with = institution, 
+    where = location, 
+    why = details)
+```
+
+
+# Publications
+
+<!-- I made folders for my publications in Zotero, and exported as Better Bibtex. (Check export settings in preferences) -->
+## In review
+```{r}
+vitae::bibliography_entries(here("data/in-progress.bib"))
+```
+
+
+## Published
+```{r pubs}
+# note, make sure the bib "date" only contains the year, otherwise it wont sort properly
+vitae::bibliography_entries(here("data/published.bib")) %>%
+  arrange(desc(issued))
+```
+
+<!-- \pagebreak -->
+
+# Presentations
+
+```{r conferences}
+conferences <- read_csv(here("data/conferences.csv"))
+
+conferences %>% 
+  arrange(-year) %>%
+   brief_entries(
+    what = str_c(event, organization, sep = ", "), 
+    when = year)
+```
+
+
+# Relevent work history
+
+```{r, work}
+ta <- read_csv(here("data/ta.csv"))
+jobs <- read_csv(here("data/jobs.csv"))
+
+
+ta_tidy <- ta %>% 
+  arrange(-year) %>% 
+  mutate(role = paste("TA", course, sep = ", "), 
+         organization = institution, 
+         date_range = as.character(year)) %>% 
+  select(role, date_range, organization)
+
+jobs_tidy <- jobs %>% 
+  arrange(-start_date) %>% 
+  mutate(end_date = case_when(is.na(end_date)~"", 
+                              TRUE~as.character(end_date))) %>% 
+  mutate(date_range = paste(start_date, "---", end_date)) %>% 
+  select(role, date_range, organization)
+
+bind_rows(jobs_tidy, ta_tidy) %>% 
+  brief_entries(
+    what = str_c(role, organization, sep = ", "),
+    when = date_range
+  )
+```
+
+# Workshop leader
+
+```{r workshops}
+workshops <- read_csv(here("data/workshops_taught.csv"))
+
+workshops %>% 
+  arrange(-year) %>% 
+  distinct(course_title, year, host) %>% 
+  brief_entries(
+    what = course_title, 
+    when = year)
+```
+
+# Mentorship
+
+```{r, mentoring}
+mentoring <- read_csv(here("data/mentoring.csv"))
+
+mentoring %>% 
+  arrange(-year) %>% 
+  brief_entries(
+    what = str_c(name, notes, sep = ", "), 
+    when = year)
+```
+
+
+# Science communication
+
+## Outreach
+```{r}
+community <- read_csv(here("data/community.csv"))
+
+community %>% 
+  arrange(-year) %>% 
+  brief_entries(
+    what = str_c(role, organization, sep = ", "),
+    when = year
+  )
+
+```
+
+
+## Magazine articles
+
+```{r}
+
+vitae::bibliography_entries(here("data/sci-com.bib"))
+
+```
+
+# Committees
+
+```{r, service}
+service <- read_csv(here("data/service.csv"))
+
+service %>% 
+  arrange(-year) %>% 
+  brief_entries(
+    what = str_c(role, organization, sep = ", "),
+    when = year)
+```
+
+# Scholarships
+
+```{r, scholarships}
+scholarships <- read_csv(here("data/scholarships.csv"))
+
+scholarships %>%
+  arrange(-year) %>% 
+  brief_entries(
+    what = str_c(award, amount, sep = ", $"), 
+    when = year)
+```
+
+
+
+
+<!-- Not really a part of an academic CV, but may want to add for later if I get into software -->
+<!-- # Skills -->
+
+<!-- ```{r} -->
+<!-- skills %>% detailed_entries(what = skill, with = category) -->
+<!-- ``` -->
+
+
+
+
+<!-- ```{r} NOTES ------------------------------> 
+<!-- https://pkg.mitchelloharawild.com/vitae/articles/extending.html -->
+<!-- # Decided not to use scholar because it lacks DOI -->
+<!-- # google_scholar <- scholar::get_publications("aST1ItMAAAAJ") %>% -->
+<!-- #   dplyr::mutate(author = author %>% as.character(), -->
+<!-- #                 first_author = str_split_n(author, ",", 1), -->
+<!-- #                 peer_reviewed = case_when(journal %in% c("US Fish and Wildl. Serv. Rep., AMNWR") ~ FALSE, -->
+<!-- #                                           TRUE ~ TRUE)) %>% -->
+<!-- #   dplyr::arrange(desc(year)) %>% -->
+<!-- #   filter(peer_reviewed == TRUE) -->
+
+<!-- # And orcid is just plain confusiong -->
+<!-- # orcid <- rorcid::orcid_works("0000-0002-6553-7883") -->
+
+<!-- # # write bib for each line (formatting hack) -->
+<!-- # presentations %>%  -->
+<!-- #   rename() -->
+<!-- #   df2bib() -->
+<!-- ``` -->
+
