@@ -1,2 +1,3 @@
-"role"," company"," where","start_date","end_date","details"
-"Research Assistant","Simon Fraser University","Vancouver","2018","current","PhD"
+"role","organization","location","start_date","end_date","details"
+"Research Assistant","SFU Dept. MBB","Burnaby, BC","2018",,"PhD"
+"Research Programming Peer","SFU Library Research Commons","Burnaby, BC",2021,,

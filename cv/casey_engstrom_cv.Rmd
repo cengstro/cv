@@ -55,7 +55,7 @@ edu %>%
 # Publications
 
 <!-- I made folders for my publications in Zotero, and exported as Better Bibtex. (Check export settings in preferences) -->
-## In review
+## In press
 ```{r}
 vitae::bibliography_entries(here("data/in-progress.bib"))
 ```

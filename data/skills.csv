@@ -1,14 +1,18 @@
-"category"," skill"
-"Analytical","statistical modelling"
-"Analytical","data science"
-"Analytical","reproducible research"
-"Programming","R"
-"Programming","Python"
-"Programming","Bash"
-"Programming","Linux"
-"Programming","Google Earth Engine"
-"Packages"," shiny"
-"Packages"," tidyverse"
-"Packages","tidymodels"
-"Packages","shiny"
-"Tools"," Git"
+"category","skill","level"
+"Analytical","Statistical modelling",
+"Analytical","Data science",
+"Analytical","Reproducible research",
+"Analytical","Bioinformatics",
+"Programming","R","Leads workshops"
+"Programming","Google Earth Engine Javascript API","Leads workshops"
+"Programming","Python","Can collaborate"
+"Programming","Bash","Basic"
+"Programming","HPC","Basic"
+"Packages","shiny","Basic"
+"Packages","tidyverse","Leads workshops"
+"Packages","tidymodels","Could lead workshops"
+"Lab","PCR",
+"Lab","Cell culture",
+"Lab","Microscopy",
+"Lab","Oxford Nanopore",
+"Lab","Illumina",

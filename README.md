@@ -13,7 +13,8 @@ Academic CV built using R. See below for repository structure, tool links and to
 
 ## To do
 
-[ ] Publications numbers counting down
-[ ] Add aboutme in yaml header
-[ ] Add URL to magazine article
-[ ] Add employment history
+- [ ] Publications numbers counting down
+- [ ] Add research statement to yaml header 'aboutme'
+- [ ] Add URL to magazine article
+- [ ] Add employment history
+- [ ] reduce boldness of 'with'
